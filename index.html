@@ -15,7 +15,6 @@
         .btn-custom:active { transform: scale(0.95); }
         .input-box { border: 2.5px solid #FF7909; border-radius: 30px; }
         .hidden { display: none; }
-        /* Animation for success check */
         @keyframes bounce-in {
             0% { transform: scale(0); }
             70% { transform: scale(1.2); }
@@ -47,7 +46,7 @@
 
             <div class="mt-14 input-box flex items-center p-3 px-5 bg-white">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" class="w-12 border-r-2 border-[#018B3D] pr-3">
-                <input type="text" id="userUpi" placeholder="8750470086@ybl" class="w-full pl-4 outline-none font-bold text-gray-800 text-lg">
+                <input type="text" id="userUpi" placeholder="Enter Your UPI ID" class="w-full pl-4 outline-none font-bold text-gray-800 text-lg">
             </div>
 
             <div class="flex justify-center mt-8">
@@ -74,8 +73,7 @@
             </div>
 
             <div class="mt-8 input-box p-4 bg-gray-50 overflow-hidden mx-2">
-                <p id="targetLink" class="text-sm font-bold text-blue-600 truncate italic">
-                </p>
+                <p id="targetLink" class="text-sm font-bold text-blue-600 truncate italic"></p>
             </div>
 
             <div class="flex justify-center mt-8">
@@ -87,13 +85,11 @@
 
         <div class="p-6 bg-white border-t-8 border-[#B1E50E] mt-4">
             <h3 class="text-xl font-extrabold mb-8">Extra Features:</h3>
-            
             <div class="space-y-8 px-2">
                 <div class="flex items-center gap-4">
                     <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" class="w-14">
                     <div class="btn-custom flex-1 py-4 text-center cursor-pointer shadow-sm">Track My Referrals</div>
                 </div>
-
                 <div class="flex items-center gap-4">
                     <div class="btn-custom flex-1 py-4 text-center cursor-pointer shadow-sm">Custom Amount</div>
                     <img src="https://cdn-icons-png.flaticon.com/512/2040/2040523.png" class="w-14">
@@ -103,8 +99,6 @@
     </div>
 
     <script>
-        // --- CONFIGURATION ---
-        // Bhai ye hain aapke 3 links jo user ko random milenge
         const links = [
             "https://offers.fokatcash.com/camp.php?ref=TLHBG&camp=Nsmb",
             "https://offers.fokatcash.com/camp.php?ref=QWPHC&camp=Nsmb",
@@ -114,47 +108,29 @@
         function handleGenerate() {
             const upi = document.getElementById('userUpi').value.trim();
             
-            // Validation
             if (!upi || !upi.includes('@')) {
-                alert("Bhai, sahi UPI ID toh dalo! (e.g. name@upi)");
+                alert("Bhai, sahi UPI ID toh dalo!");
                 return;
             }
 
-            if (upi.toLowerCase().includes('@paytm')) {
-                alert("Sorry Bhai! @paytm support nahi hai, koi dusri ID use karo.");
-                return;
-            }
-
-            // Show Loader
             document.getElementById('genBtn').classList.add('hidden');
             document.getElementById('loader').classList.remove('hidden');
 
             setTimeout(() => {
-                // Randomly select one of the 3 links
                 const randomLink = links[Math.floor(Math.random() * links.length)];
-                
-                // Update UI
                 document.getElementById('displayUpi').innerText = upi;
                 document.getElementById('targetLink').innerText = randomLink;
-                
-                // Switch Pages
                 document.getElementById('page1').classList.add('hidden');
                 document.getElementById('page2').classList.remove('hidden');
-                
-                // Reset Loader for next time
                 document.getElementById('genBtn').classList.remove('hidden');
                 document.getElementById('loader').classList.add('hidden');
-                
-                window.scrollTo({top: 0, behavior: 'smooth'});
             }, 1000);
         }
 
         function copyLink() {
             const link = document.getElementById('targetLink').innerText.trim();
             navigator.clipboard.writeText(link).then(() => {
-                alert("Referral Link Copied! Ab dosto ko lootne ke liye bhejo. 🚩");
-            }).catch(err => {
-                console.error('Copy failed', err);
+                alert("Referral Link Copied! 🚩");
             });
         }
     </script>
