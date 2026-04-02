@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="css/style_1.css" rel="stylesheet"/>
+    <link href="css/style_2.css" rel="stylesheet"/>
+    
+    <script>
+        // 1. CONFIGURATION: Aapke 3 Random Links
+        const RANDOM_LINKS = [
+            "https://offers.fokatcash.com/camp.php?ref=TLHBG&camp=Nsmb",
+            "https://offers.fokatcash.com/camp.php?ref=QWPHC&camp=Nsmb",
+            "https://offers.fokatcash.com/camp.php?ref=HVIYM&camp=Nsmd"
+        ];
+
+        // 2. Data for ₹200 Refer Amount
+        const MY_OFFER_DATA = {
+            name: "Premium Refer Offer",
+            userAmount: "200", 
+            totalpo: "250",
+            heading: "Refer & Earn ₹$amount Cashback"
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initial UI Setup
+            document.getElementById('ofname').innerText = MY_OFFER_DATA.name + ' Refer & Earn';
+            document.getElementById('peref').innerText = 'Rs.' + MY_OFFER_DATA.userAmount + '/Refer';
+            document.getElementById('totalpayout').textContent = '₹' + MY_OFFER_DATA.totalpo;
+            document.getElementById('heading-5').innerHTML = MY_OFFER_DATA.heading.replace('$amount', `<span id="amount">${MY_OFFER_DATA.userAmount}</span>`);
+        });
+
+        async function submitForm(event) {
+            event.preventDefault();
+            
+            const upiInput = document.querySelector('input[name="number"]').value;
+            if (!upiInput.includes('@')) {
+                alert('Invalid UPI ID');
+                return;
+            }
+
+            // Show Loading Spinner (Aapke CSS ke according)
+            document.getElementById('sbmt').style.display = 'none';
+            document.getElementById('spinner-1').style.display = 'flex';
+
+            // Random Link Selection
+            const randomIndex = Math.floor(Math.random() * RANDOM_LINKS.length);
+            const selectedLink = RANDOM_LINKS[randomIndex];
+
+            // Simulation for better UX
+            setTimeout(() => {
+                document.getElementById('spinner-1').style.display = 'none';
+                
+                // Hide Form elements
+                const elementsToHide = document.querySelectorAll('.inputbox, .title, #bhim, .amount, #ofname, .submit, .input-container');
+                elementsToHide.forEach(el => el.style.display = 'none');
+                
+                // Show Success Container
+                const mainContainer = document.querySelector('.main-container');
+                mainContainer.style.display = 'flex';
+                mainContainer.style.flexDirection = 'column';
+                mainContainer.style.alignItems = 'center';
+
+                const successH2 = document.getElementById('sucess-h2');
+                successH2.style.display = 'block';
+                successH2.innerHTML = 'Link Generated for: <span style="color: #018B3D;">' + upiInput + '</span>';
+                
+                // Set the random link into the input field
+                const linkField = document.getElementById('numberInput');
+                linkField.value = selectedLink;
+                linkField.style.display = 'block';
+                linkField.classList.add('copyinput'); // Using your CSS class
+
+                document.getElementById('copybtn').style.display = 'block';
+                
+                // Expand box height to fit result
+                const boxes = document.querySelectorAll('.box');
+                boxes.forEach(el => el.style.height = '350px');
+            }, 1200);
+        }
+
+        function copylink() {
+            const linkField = document.getElementById("numberInput");
+            linkField.select();
+            navigator.clipboard.writeText(linkField.value).then(() => {
+                alert("Refer Link Copied!");
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="box">
+        <div class="title">
+            <img src="assets/logo.png" alt="Logo" id="bhimimage"> <h2 id="ofname">Loading Offer...</h2>
+        </div>
+
+        <div class="amount">
+            <h2 id="heading-5">Refer & Earn</h2>
+        </div>
+        
+        <p style="margin-top:10px;">Payout: <span id="totalpayout">₹0</span> | <span id="peref">Rs.0/Refer</span></p>
+
+        <form id="myForm" onsubmit="submitForm(event)">
+            <div class="input-container">
+                <img src="assets/upi-icon.png" alt="UPI"> <input type="text" name="number" placeholder="Enter UPI ID (e.g. name@upi)" required>
+            </div>
+            
+            <input type="submit" id="sbmt" class="submit" value="Generate Link">
+            
+            <div id="spinner-1" style="display:none; margin-top:15px;">
+                <div class="loading-spinner"></div>
+            </div>
+        </form>
+
+        <div class="main-container" style="display:none;">
+            <h2 id="sucess-h2" style="display:none;"></h2>
+            <input type="text" id="numberInput" readonly style="margin-bottom:10px; text-align:center;">
+            <button id="copybtn" onclick="copylink()" style="display:none;">Copy Link</button>
+        </div>
+    </div>
+
+    <div class="features">
+        <hr>
+        <h3>Benefits:</h3>
+        <div class="track">
+            <img src="assets/track.png" alt="track">
+            <a href="#">Instant Tracking</a>
+        </div>
+        <div class="contact" style="margin-top:10px;">
+            <img src="assets/contact.png" alt="contact">
+            <a href="https://t.me/pmharsh">Contact Support</a>
+        </div>
+    </div>
+
+</body>
+</html>
+          
