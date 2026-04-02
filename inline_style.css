@@ -1,44 +1,171 @@
-/* Link Generate hone ke baad ka box styling */
-#generatedLink {
-    height: 35px;
-    width: 280px;
-    border: 2px solid #FF7909; /* Theme Match */
-    border-radius: 20px;
-    padding: 5px 15px;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
-    background-color: #f9f9f9;
+/* Custom Styles for Nielsen Mobile Refer & Earn */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #B1E50E; /* Official Nielsen Lime Green */
+    min-height: 100vh;
     font-family: "Quicksand", sans-serif;
     font-weight: 700;
 }
 
-#copybtn {
-    padding: 5px;
-    background-color: #B1E50E;
-    border: none;
-    width: 144px;
-    height: 38px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 17px;
-    margin: 17px auto 0 auto;
-    cursor: pointer;
-    display: block;
-}
-
-#sucess-h2 {
-    color: #333;
-    font-size: 16px;
-    margin-top: 15px;
-    text-align: center;
-}
-
-/* Spinner adjustment */
-#spinner-1 {
+.box {
+    width: 380px;
+    height: auto;
+    min-height: 450px; 
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 50px; /* Fully rounded like the screenshot */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    padding-bottom: 30px;
+}
+
+/* Nielsen Title Header */
+.box h1 {
+    font-weight: 700;
+    font-size: 26px;
+    width: 90%;
+    text-align: left;
+    margin-top: 25px;
+    color: #000;
+    line-height: 1.2;
+}
+
+/* Reward Banner Style (The Megaphone Section) */
+.reward-banner {
+    display: flex;
+    align-items: center;
+    width: 90%;
     margin-top: 15px;
-    color: #018B3D;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+
+.reward-banner img {
+    width: 40px;
+    margin-right: 12px;
+}
+
+.reward-banner p {
+    margin: 0;
+    font-size: 14px;
+    color: #FF7909; /* Nielsen Orange */
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+/* Rs.200 Refer Badge */
+.amount {
+    margin: 30px 0;
+    background-color: #B1E50E;
+    width: 300px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(177, 229, 14, 0.4);
+}
+
+.amount img {
+    width: 85px;
+    position: absolute;
+    left: -25px; /* Gift box sticking out like screenshot */
+}
+
+.amount h2 {
+    margin: 0;
+    margin-left: 35px; /* Space for the gift icon */
+    font-size: 30px;
+    color: #000;
+    font-weight: 800;
+}
+
+/* UPI Input Field - Orange Border */
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 2.5px solid #FF7909; /* Orange Border like photo */
+    border-radius: 30px;
+    height: 55px;
+    width: 310px;
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 0 15px;
+}
+
+.input-container img {
+    height: 25px;
+    border-right: 2.5px solid #018B3D; /* Green separator */
+    padding-right: 12px;
+    margin-right: 12px;
+}
+
+.input-container input {
+    border: none;
+    outline: none;
+    font-size: 17px;
+    font-weight: 700;
+    width: 100%;
+    color: #000;
+    font-family: "Quicksand", sans-serif;
+}
+
+/* Generate Button */
+.submit, #copybtn {
+    padding: 12px 40px;
+    background-color: #B1E50E;
+    color: #000;
+    border: none;
+    border-radius: 35px;
+    margin-top: 25px;
+    font-weight: 800;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Extra Features Box */
+.features {
+    width: 380px;
+    background-color: white;
+    border-radius: 35px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.features h3 {
+    text-align: left;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+/* Feature Items (Track/Custom) */
+.feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.feature-btn {
+    background-color: #B1E50E;
+    color: black;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
 }
